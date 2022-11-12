@@ -20,6 +20,8 @@ class Shop(Base):
     id = sq.Column(sq.Integer, primary_key=True)
     name = sq.Column(sq.String(length=40), unique=True)
 
+    def __str__(self):
+        return f'Shop name: {self.name}'
 
 class Book(Base):
     __tablename__ = "book"

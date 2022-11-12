@@ -39,9 +39,17 @@ for record in data:
 
     session.commit()
 
+
 publisher_id_input = int(input())
-p = session.query(Publisher).filter(Publisher.id == publisher_id_input).all()
-for i in p:
+publisher_query = session.query(Publisher).filter(Publisher.id == publisher_id_input).all()
+shop_query = session.query(Shop).join(Stock).join(Book).join(Publisher).filter(Publisher.id == publisher_id_input).all()
+
+
+for i in publisher_query:
     print(i)
+
+for i in shop_query:
+    print(i)
+
 
 session.close()
